@@ -7,28 +7,9 @@
 
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="/assets/mainpage.css">
 </head>
 
-
-<style>
-
-  .container {
-    background-color: yellow;
-  }
-
-  p {
-    display: inline-block;
-
-  }
-
-  #nextRestaurant {
-    display: block;
-    margin: auto;
-    margin-top: 10px;
-  }
-
-</style>
 
 <header>
   <h1> What The Food: Random Restaurant Generator</h1>
@@ -37,12 +18,18 @@
 
 <body>
 
-  <div class="container">
-    Restaurant Name: <strong><p id="restName">Hello</p></strong>
-    <br>
-    Restaurant Link: <strong><p id="restLink"></p></strong>
+  <div class="container" id="location">
+
   </div>
-  <button id="nextRestaurant"><strong>Next</strong></button>
+
+  <div class="container">
+    Restaurant Name: <strong><p id="restName"></p></strong>
+    <br> Restaurant Link: <strong><p id="restLink"></p></strong>
+  </div>
+
+  <div id="clickButton">
+    <button id="initialButton"><strong>Hmm</strong></button>
+  </div>
 
 
 

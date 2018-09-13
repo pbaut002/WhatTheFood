@@ -1,0 +1,20 @@
+.container {
+  background-color: red;
+}
+
+p {
+  display: inline-block;
+
+}
+
+#nextRestaurant,
+#initialButton {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
+
+#location {
+  display: block;
+  margin: auto;
+}
