@@ -1,6 +1,6 @@
 const yelpFusion = require('yelp-fusion');
 
-var apiKey = "";
+var apiKey = process.env.SECRET;
 
 const yelp = yelpFusion.client(apiKey);
 
@@ -16,7 +16,7 @@ function getRestaurantsByGeo(lat, long) {
     console.log(e);
   });
 
-  return response.jsonBody.businesses[0];
+
 };
 
 
