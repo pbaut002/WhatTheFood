@@ -11,19 +11,44 @@ function getLocation() {
       */
       $.ajax({
           type:"POST",
-          url:"/yelpQuery",
+          url:"/yelpQueryByCoords",
           data: {lat: posLat,long: posLong},
           success: function(data) {
             chooseRestaurant(data);
           },
         });
+
     }, function() {
-      $("#location").html("<form id=\"userLocation\" target=\"_\">" +
-        "<input type=\"text\" placeholder=\"Enter zipcode or city\">" +
+      $("#location").html("<form id=\"userLocation\">" +
+        "<input type=\"text\" name=\"location\"  id=\"location\" placeholder=\"Enter zipcode or city\">" + //
+        "<input type=\"submit\" value=\"Submit\" >" + 
         "</form>");
+
+      var queryString;
+      $("#userLocation").submit(function(e){
+          e.preventDefault();
+          queryString = $("#userLocation [name=location]").val().toString(); // Gets the input of form
+            alert(queryString);
+
+            $.ajax({
+              type:"POST",
+              url:"/yelpQueryByLocation",
+              data: {cityOrZip: queryString},
+              success: function(data) {
+                console.log("Success");
+                chooseRestaurant(data);
+              },
+           });
+
+        });
+
+      /*
+        Gets list of restaurants using the inputted form
+      */
     });
   }
 };
+
 
 function chooseRestaurant(restaurants){
   /*
@@ -45,8 +70,5 @@ function chooseRestaurant(restaurants){
 
   })
 }
-  getLocation();
-
-  // $("#initialButton").click(function(){
-  //   $("#restName").html(data);
-  // })
+  
+getLocation();
