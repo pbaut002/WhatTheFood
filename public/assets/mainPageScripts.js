@@ -30,6 +30,9 @@ function getLocation() {
           queryString = $("#userLocation [name=location]").val().toString(); // Gets the input of form
             alert(queryString);
 
+            /*
+               Gets list of restaurants using the inputted form
+            */
             $.ajax({
               type:"POST",
               url:"/yelpQueryByLocation",
@@ -42,11 +45,10 @@ function getLocation() {
 
         });
 
-      /*
-        Gets list of restaurants using the inputted form
-      */
+      
     });
   }
+
 };
 
 
@@ -54,11 +56,11 @@ function chooseRestaurant(restaurants){
   /*
    Chooses from lists of restaurants. This is where randomization happens
   */
-
   var usedNumbers = []; // Stores the numbers within
-
+  
   $("#initialButton").click(function(){
     var num = Math.floor(Math.random()*20);
+    $("#initialButton").html("<strong>Next Restaurant</strong>");
     if(usedNumbers.includes(num) == false){
       $("#restName").html("<strong>" + restaurants[num].name + "</strong>");
       $("#restLoc").html("<strong>" + restaurants[num].location.address1 + ",</strong>" +

@@ -17,13 +17,10 @@ module.exports = function(app){
     res.render("main");
   });
 
-  app.post("/sendCoords",urlencodedParser,function(req,res){
-    // coordinates.push(req.body);
-    // console.log(coordinates[0].long);
-    // console.log("success");
-  });
-
   app.post("/yelpQueryByCoords",urlencodedParser,function(req,res){
+    /*
+      If user allows access to their location, then we search via this.
+    */
     var coordinates = [];
     coordinates.push(req.body);
     console.log(req.body);
@@ -39,10 +36,12 @@ module.exports = function(app){
   });
 
   app.post("/yelpQueryByLocation",urlencodedParser,function(req,res){
+    /*
+      Location from user input
+    */
     var coordinates = [];
-    console.log(req.body);
     coordinates.push(req.body);
-    console.log(coordinates[0].cityOrZip);
+
     yelp.search({
       location: coordinates[0].cityOrZip,
       radius: 40000
